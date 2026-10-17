@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Sayang! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+</head>
+<body class="desktop-mode">
+
+    <!-- Tombol Kontrol Atas (Musik & Mode Tampilan) -->
+    <div class="top-controls">
+        <button id="musicToggle" class="control-btn">🎵 Putar Musik</button>
+        <button id="modeToggle" class="control-btn">📱 Mode HP</button>
+    </div>
+
+    <!-- Musik MP3 -->
+    <audio id="bgMusic" src="lagu-kita.mp3" loop></audio>
+
+    <!-- Partikel Hati & Konfeti -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Wrapper Utama -->
+    <div class="screen-wrapper" id="screenWrapper">
+        <div class="slider-container">
+            
+            <!-- HALAMAN 1: Sambutan & Tiup Lilin Meriah -->
+            <section class="page active" id="page1">
+                <div class="content-box">
+                    <span class="tag">Hari Spesial Kamu 🎉</span>
+                    <h1 class="title">Selamat Ulang Tahun!</h1>
+                    <p class="subtitle">Tiup lilinnya dan buat harapan terbaik kamu hari ini ya✨</p>
+                    
+                    <div class="cake-wrapper">
+                        <div class="cake">
+                            <div class="candle">
+                                <div class="flame" id="flame"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-area">
+                        <button id="blowBtn" class="btn btn-secondary">💨 Tiup Lilinnya!</button>
+                    </div>
+
+                    <div id="blowSurprise" class="surprise-text hidden">
+                        ✨ Make a wish! Semoga semua impianmu terwujud! 🎂🎉
+                    </div>
+                    
+                    <button class="btn btn-next" onclick="nextPage()">Lanjut ke Halaman Berikutnya ➔</button>
+                </div>
+            </section>
+
+            <!-- HALAMAN 2: Ucapan Manusiawi & Hangat -->
+            <section class="page" id="page2">
+                <div class="content-box">
+                    <h2 class="handwriting">Untuk Kamu yang Paling Berarti...</h2>
+                    <div class="letter-body">
+                        <p>Selamat bertambah usia ya!</p>
+                        <p>Terima kasih sudah bertahan sampai hari ini, melewati banyak hal baik yang bikin kamu tersenyum maupun hari-hari berat yang mungkin bikin kamu capek.</p>
+                        <p>Aku bersyukur banget bisa ada di samping kamu, ngeliat kamu tumbuh, dan melangkah bareng kamu. Semoga di usia yang baru ini, langkah kamu terasa lebih ringan, hati kamu makin tenang, dan hal-hal baik selalu menemukan jalannya ke kamu.</p>
+                        <p>Jangan pernah ragu sama diri kamu sendiri ya, karena buat aku, kamu selalu mengagumkan dengan cara kamu sendiri. ❤️</p>
+                    </div>
+                    <div class="nav-buttons">
+                        <button class="btn btn-prev" onclick="prevPage()">⬅ Kembali</button>
+                        <button class="btn btn-next" onclick="nextPage()">Lanjut ➔</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 3: Halaman Khusus Foto Dia (3 Foto) -->
+            <section class="page" id="page3">
+                <div class="content-box">
+                    <h2>Semua Tentang Kamu 🌸</h2>
+                    <p class="subtitle">Beberapa potret favorit aku dari kamu yang selalu bikin terpana.</p>
+
+                    <div class="solo-photos-grid">
+                        <div class="polaroid-card">
+                            <div class="photo-frame">
+                                <img src="honey1.jpeg" alt="Foto Pacar 1" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=500'">
+                            </div>
+                            <p class="polaroid-caption">Senyum tercantik di dunia</p>
+                        </div>
+
+                        <div class="polaroid-card">
+                            <div class="photo-frame">
+                                <img src="honey2.jpeg" alt="Foto Pacar 2" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=500'">
+                            </div>
+                            <p class="polaroid-caption">Selalu manis di setiap suasana </p>
+                        </div>
+
+                        <div class="polaroid-card">
+                            <div class="photo-frame">
+                                <img src="honey3.jpeg" alt="Foto Pacar 3" onerror="this.src='https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=500'">
+                            </div>
+                            <p class="polaroid-caption">Favorit aku sepanjang masa ❤️</p>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button class="btn btn-prev" onclick="prevPage()">⬅ Kembali</button>
+                        <button class="btn btn-next" onclick="nextPage()">Lanjut ➔</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 4: Galeri Kenangan Berdua (3 Foto) -->
+            <section class="page" id="page4">
+                <div class="content-box">
+                    <h2>Sedikit Cerita Tentang Kita 📸</h2>
+                    <p class="subtitle">Setiap momen sama kamu selalu punya tempat tersendiri di hati aku.</p>
+
+                    <div class="gallery-grid">
+                        <div class="photo-card">
+                            <div class="img-placeholder">
+                                <img src="foto bersama1.jpeg" alt="Foto Berdua 1" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=500'">
+                            </div>
+                            <p class="caption">Senyum kamu yang selalu bikin suasana jadi hangat.</p>
+                        </div>
+
+                        <div class="photo-card">
+                            <div class="img-placeholder">
+                                <img src="foto bersama2.jpeg" alt="Foto Berdua 2" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=500'">
+                            </div>
+                            <p class="caption">Momen receh dan tenang yang selalu aku tunggu setiap harinya.</p>
+                        </div>
+
+                        <div class="photo-card">
+                            <div class="img-placeholder">
+                                <img src="foto bersama3.jpeg" alt="Foto Berdua 3" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=500'">
+                            </div>
+                            <p class="caption">Setiap sudut cerita selalu indah kalau sama kamu. ❤️</p>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button class="btn btn-prev" onclick="prevPage()">⬅ Kembali</button>
+                        <button class="btn btn-next" onclick="nextPage()">Lanjut ➔</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 5: Alasan Mengapa Aku Mencintaimu -->
+            <section class="page" id="page5">
+                <div class="content-box">
+                    <h2>Alasan Kenapa Aku Sayang Kamu ✨</h2>
+                    <p class="subtitle">Klik setiap kartu untuk melihatnya satu per satu:</p>
+
+                    <div class="reasons-container">
+                        <div class="reason-card" onclick="this.classList.toggle('flipped')">
+                            <div class="card-inner">
+                                <div class="card-front">1. Cara Kamu Perhatian 💖</div>
+                                <div class="card-back">Hal-hal kecil yang kamu lakukan selalu sukses bikin aku merasa dihargai dan dicintai.</div>
+                            </div>
+                        </div>
+
+                        <div class="reason-card" onclick="this.classList.toggle('flipped')">
+                            <div class="card-inner">
+                                <div class="card-front">2. Ketabahan Kamu 🌟</div>
+                                <div class="card-back">Melihat kamu berjuang dan pantang menyerah selalu bikin aku makin kagum sama kamu.</div>
+                            </div>
+                        </div>
+
+                        <div class="reason-card" onclick="this.classList.toggle('flipped')">
+                            <div class="card-inner">
+                                <div class="card-front">3. Rumah Buat Aku 🏡</div>
+                                <div class="card-back">Cuma sama kamu aku bisa jadi diri sendiri tanpa perlu takut dinilai apa-apa.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button class="btn btn-prev" onclick="prevPage()">⬅ Kembali</button>
+                        <button class="btn btn-next" onclick="nextPage()">Lanjut ➔</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 6: FITUR SALTING BRUTAL (Love Meter & Tombol Kabur) -->
+            <section class="page" id="page6">
+                <div class="content-box">
+                    <h2>Kuis Kejujuran Hati 💘</h2>
+                    <p class="subtitle">Coba tes seberapa besar rasa sayang kita!</p>
+
+                    <!-- Fitur 1: Love Meter -->
+                    <div class="love-meter-box">
+                        <p class="meter-label">Ukur Tingkat Sayang Aku Ke Kamu:</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="loveFill"></div>
+                        </div>
+                        <div class="meter-score" id="loveScore">0%</div>
+                        <button id="calcLoveBtn" class="btn btn-secondary" onclick="calculateLove()">💓 Cek Ukuran Sayangku</button>
+                        <p id="loveResult" class="surprise-text hidden"></p>
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- Fitur 2: Tombol Jebakan Cinta (Gak Bisa Diklik) -->
+                    <div class="question-box">
+                        <p class="question-title">Pertanyaan Penting: Kamu Sayang Aku Juga Ga? 🥺</p>
+                        <div class="ask-buttons-wrapper">
+                            <button class="btn btn-next" onclick="sayYes()">Sayang Banget! ❤️</button>
+                            <button id="noBtn" class="btn btn-prev">Gak 😜</button>
+                        </div>
+                        <p id="yesResult" class="surprise-text hidden">Tuh kaann, emang gak bisa palingin hati dari aku! 🙈❤️</p>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button class="btn btn-prev" onclick="prevPage()">⬅ Kembali</button>
+                        <button class="btn btn-next" onclick="nextPage()">Lanjut ➔</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 7: Penutup & Harapan -->
+            <section class="page" id="page7">
+                <div class="content-box">
+                    <h1 class="handwriting">Sekali lagi, Selamat Ulang Tahun!</h1>
+                    <p class="letter-body" style="text-align: center;">
+                        Makasih ya sudah hadir di dunia ini dan jadi bagian terindah dalam hidup aku.<br><br>
+                        Aku selalu ada di sini buat kamu, di hari baik maupun hari berat.<br><br>
+                        <strong>I love you so much! ❤️</strong>
+                    </p>
+                    <div class="nav-buttons" style="justify-content: center; gap: 10px;">
+                        <button class="btn btn-prev" onclick="prevPage()">⬅ Kembali</button>
+                        <button class="btn btn-secondary" onclick="goToPage(0)">🔄 Ulangi Dari Awal</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
